@@ -1,0 +1,94 @@
+import static java.lang.Math.abs;
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
+import java.util.Scanner;
+
+
+public class main {
+    
+    public static void main(String[] args) {
+        
+      Scanner ent = new Scanner(System.in);
+      
+    int [][] Mat= new int [100][100];
+    int mayor =  0, n = 0 , p = 0;
+    int suma;
+    do{
+        System.out.println("ingrese el orden n de la matriz A: ");
+        System.out.println("tiene que ser mayor o igual a 1");
+        n = ent.nextInt();
+      
+
+    }while(n<=0);
+
+    do{
+        System.out.println("ingrese p: ");
+        System.out.println("tiene que ser 1 o 2");
+        p = ent.nextInt();
+
+
+    }while(p != 1 && p != 2 );
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+
+            System.out.printf("Ingrese los elemnetos de la matriz ( %d, %s)  ",i+1,j+1);
+            Mat[i][j] = ent.nextInt();
+            
+         
+        }
+    }
+     System.out.println();
+     
+     for (int i = 0 ; i<n ; i++ ){
+        for (int j = 0 ; j<n ; j++){
+            
+            System.out.print(Mat[i][j]+" ");
+          
+       }
+         System.out.println();
+    }
+        System.out.println();
+
+
+
+    if (p==1){
+
+        for (int j = 0; j < n; j++) {
+                suma=0;
+            for (int i = 0; i < n; i++) {
+
+                    suma += abs(Mat[j][i]);
+
+                    if (suma >= mayor) {
+                    mayor = suma;
+                }
+
+            }
+        }
+
+        System.out.println();
+        System.out.println("La norma 1 de la matriz es: " + mayor);
+        
+
+    } else if(p==2){
+        suma=0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+
+                    suma += pow(Mat[i][j],2);
+
+            }
+        }
+
+        System.out.println();
+        System.out.println("La norma p de la matriz es: " + sqrt(suma));
+      
+      
+        
+        
+        
+        }
+ 
+    }
+}
